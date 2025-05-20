@@ -199,7 +199,7 @@ const Solicitations = () => {
             <div className="flex-grow">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <LuSearch className="text-gray-500" />
+                  <Search className="text-gray-500" />
                 </div>
                 <Input
                   id="solicitation-search"
@@ -263,15 +263,15 @@ const Solicitations = () => {
                   </div>
                   <div className="mt-4 space-y-2">
                     <div className="flex items-center text-sm">
-                      <LuUser className="text-gray-400 mr-2" />
+                      <User className="text-gray-400 mr-2" />
                       <span>Min. Experience: {solicitation.experience} years</span>
                     </div>
                     <div className="flex items-center text-sm">
-                      <LuTimer className="text-gray-400 mr-2" />
+                      <Timer className="text-gray-400 mr-2" />
                       <span>Est. Duration: {solicitation.duration} months</span>
                     </div>
                     <div className="flex items-center text-sm">
-                      <LuDollarSign className="text-gray-400 mr-2" />
+                      <DollarSign className="text-gray-400 mr-2" />
                       <span>Budget: {solicitation.budget}</span>
                     </div>
                   </div>
