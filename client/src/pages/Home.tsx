@@ -16,12 +16,12 @@ const Home = () => {
             <div className="flex flex-wrap gap-4">
               <Link href="/routes">
                 <Button className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md shadow-md flex items-center">
-                  <LuMap className="mr-2" /> View Routes
+                  <Map className="mr-2" /> View Routes
                 </Button>
               </Link>
               <Link href="/solicitations">
                 <Button variant="secondary" className="px-6 py-3 rounded-md shadow-md flex items-center">
-                  <LuFileText className="mr-2" /> View Solicitations
+                  <FileText className="mr-2" /> View Solicitations
                 </Button>
               </Link>
             </div>

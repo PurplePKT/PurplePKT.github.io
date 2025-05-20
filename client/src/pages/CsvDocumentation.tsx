@@ -25,7 +25,7 @@ const CsvDocumentation = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <LuFileText className="h-5 w-5" /> Routes CSV File Structure
+                  <FileText className="h-5 w-5" /> Routes CSV File Structure
                 </CardTitle>
                 <CardDescription>
                   The routes CSV file contains all available USPS routes displayed on the Routes page.
@@ -103,7 +103,7 @@ const CsvDocumentation = () => {
                 </pre>
                 
                 <Alert className="mt-6">
-                  <LuInfo className="h-4 w-4" />
+                  <Info className="h-4 w-4" />
                   <AlertDescription>
                     Do not add, remove, or rename columns. Keep the same column structure to ensure compatibility with the website.
                   </AlertDescription>
@@ -116,7 +116,7 @@ const CsvDocumentation = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <LuClipboard className="h-5 w-5" /> Solicitations CSV File Structure
+                  <ClipboardList className="h-5 w-5" /> Solicitations CSV File Structure
                 </CardTitle>
                 <CardDescription>
                   The solicitations CSV file contains all active USPS solicitations displayed on the Solicitations page.
@@ -205,7 +205,7 @@ const CsvDocumentation = () => {
                 </pre>
                 
                 <Alert className="mt-6">
-                  <LuInfo className="h-4 w-4" />
+                  <Info className="h-4 w-4" />
                   <AlertDescription>
                     For status values, use only "open", "closing", or "review". Using other values may cause display issues.
                   </AlertDescription>
@@ -218,7 +218,7 @@ const CsvDocumentation = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <LuUsers className="h-5 w-5" /> Executives JSON File Structure
+                  <Users className="h-5 w-5" /> Executives JSON File Structure
                 </CardTitle>
                 <CardDescription>
                   The executives JSON file contains information about company leadership displayed on the About page.
@@ -305,15 +305,20 @@ const CsvDocumentation = () => {
                     <li>Scroll down to the "Commit changes" section</li>
                     <li>Add a brief description of your changes in the commit message field</li>
                     <li>Click "Commit changes" to save your updates</li>
-                    <li>The GitHub Actions workflow will automatically deploy your changes</li>
+                    <li>The GitHub Actions workflow will automatically build and deploy the site with your changes</li>
                   </ol>
                   
-                  <div className="flex items-center mt-6 p-4 bg-muted rounded-md">
-                    <LuGithub className="h-6 w-6 mr-3" />
-                    <div>
-                      <h4 className="font-medium">Need Access?</h4>
-                      <p className="text-sm">Contact the IT department to get access to the GitHub repository.</p>
-                    </div>
+                  <div className="flex items-center mt-6 bg-muted p-4 rounded-md">
+                    <Github className="h-6 w-6 mr-3 text-gray-700" />
+                    <p className="text-sm">
+                      Learn more about GitHub file editing and the repository structure in the 
+                      <a href="https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files" 
+                         target="_blank" 
+                         rel="noopener noreferrer"
+                         className="text-primary font-medium ml-1 hover:underline">
+                        GitHub Documentation
+                      </a>.
+                    </p>
                   </div>
                 </div>
               </CardContent>
