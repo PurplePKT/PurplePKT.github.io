@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { LuMousePointer2, LuFacebook, LuTwitter, LuLinkedin, LuGithub, LuMapPin, LuPhone, LuMail } from "react-icons/lu";
+import { MousePointer2, Facebook, Twitter, Linkedin, Github, MapPin, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-3">
-                <LuMousePointer2 className="text-primary text-xl" />
+                <FaMousePointer className="text-primary text-xl" />
               </div>
               <span className="text-xl font-medium">Purple Pocket LLC</span>
             </div>
@@ -20,7 +20,7 @@ const Footer = () => {
             </p>
             <div className="mt-4 flex space-x-4">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <LuFacebook className="h-5 w-5" />
+                <Facebook className="h-5 w-5" />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <LuTwitter className="h-5 w-5" />
