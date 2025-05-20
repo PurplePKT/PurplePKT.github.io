@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { LuMap, LuFileText } from "react-icons/lu";
+import { Map, FileText } from "lucide-react";
 
 const Home = () => {
   return (

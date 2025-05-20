@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { LuInfo, LuFileText, LuUsers, LuClipboard, LuGithub } from "react-icons/lu";
+import { Info, FileText, Users, ClipboardList, Github } from "lucide-react";
 
 const CsvDocumentation = () => {
   return (

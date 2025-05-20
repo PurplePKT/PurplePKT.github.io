@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-3">
-                <FaMousePointer className="text-primary text-xl" />
+                <MousePointer2 className="text-primary text-xl" />
               </div>
               <span className="text-xl font-medium">Purple Pocket LLC</span>
             </div>
@@ -23,13 +23,13 @@ const Footer = () => {
                 <Facebook className="h-5 w-5" />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <LuTwitter className="h-5 w-5" />
+                <Twitter className="h-5 w-5" />
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <LuLinkedin className="h-5 w-5" />
+                <Linkedin className="h-5 w-5" />
               </a>
               <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <LuGithub className="h-5 w-5" />
+                <Github className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -39,16 +39,16 @@ const Footer = () => {
               <h5 className="text-lg font-medium mb-4">Quick Links</h5>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/"><a className="text-gray-400 hover:text-white transition-colors">Home</a></Link>
+                  <Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
                 </li>
                 <li>
-                  <Link href="/routes"><a className="text-gray-400 hover:text-white transition-colors">Routes</a></Link>
+                  <Link href="/routes" className="text-gray-400 hover:text-white transition-colors">Routes</Link>
                 </li>
                 <li>
-                  <Link href="/solicitations"><a className="text-gray-400 hover:text-white transition-colors">Solicitations</a></Link>
+                  <Link href="/solicitations" className="text-gray-400 hover:text-white transition-colors">Solicitations</Link>
                 </li>
                 <li>
-                  <Link href="/about"><a className="text-gray-400 hover:text-white transition-colors">About Us</a></Link>
+                  <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link>
                 </li>
               </ul>
             </div>
@@ -57,13 +57,13 @@ const Footer = () => {
               <h5 className="text-lg font-medium mb-4">Resources</h5>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/documentation"><a className="text-gray-400 hover:text-white transition-colors">CSV Documentation</a></Link>
+                  <Link href="/documentation" className="text-gray-400 hover:text-white transition-colors">CSV Documentation</Link>
                 </li>
                 <li>
-                  <Link href="/documentation"><a className="text-gray-400 hover:text-white transition-colors">How It Works</a></Link>
+                  <Link href="/documentation" className="text-gray-400 hover:text-white transition-colors">How It Works</Link>
                 </li>
                 <li>
-                  <Link href="/documentation"><a className="text-gray-400 hover:text-white transition-colors">FAQ</a></Link>
+                  <Link href="/documentation" className="text-gray-400 hover:text-white transition-colors">FAQ</Link>
                 </li>
               </ul>
             </div>
@@ -72,15 +72,15 @@ const Footer = () => {
               <h5 className="text-lg font-medium mb-4">Contact Us</h5>
               <ul className="space-y-2">
                 <li className="flex items-start">
-                  <LuMapPin className="text-gray-400 mt-1 mr-2 flex-shrink-0" />
+                  <MapPin className="text-gray-400 mt-1 mr-2 flex-shrink-0" />
                   <span className="text-gray-400">1234 Postal Way, Suite 500<br />Denver, CO 80202</span>
                 </li>
                 <li className="flex items-center">
-                  <LuPhone className="text-gray-400 mr-2 flex-shrink-0" />
+                  <Phone className="text-gray-400 mr-2 flex-shrink-0" />
                   <span className="text-gray-400">(303) 555-1234</span>
                 </li>
                 <li className="flex items-center">
-                  <LuMail className="text-gray-400 mr-2 flex-shrink-0" />
+                  <Mail className="text-gray-400 mr-2 flex-shrink-0" />
                   <span className="text-gray-400">info@purplepocketllc.com</span>
                 </li>
               </ul>
