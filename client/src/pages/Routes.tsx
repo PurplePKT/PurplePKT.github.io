@@ -28,7 +28,7 @@ import {
 import { Button } from "@/components/ui/button";
 import BidModal from "../components/modals/BidModal";
 import ApplyModal from "../components/modals/ApplyModal";
-import { LuSearch, LuArrowUp, LuArrowDown } from "react-icons/lu";
+import { Search, ArrowUp, ArrowDown } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const Routes = () => {
@@ -224,7 +224,7 @@ const Routes = () => {
             <div className="flex-grow">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <LuSearch className="text-gray-500" />
+                  <Search className="text-gray-500" />
                 </div>
                 <Input
                   id="route-search"
@@ -278,7 +278,7 @@ const Routes = () => {
                   >
                     Route ID
                     {sortField === "id" && (
-                      sortDirection === "asc" ? <LuArrowUp className="inline ml-1" /> : <LuArrowDown className="inline ml-1" />
+                      sortDirection === "asc" ? <ArrowUp className="inline ml-1" /> : <ArrowDown className="inline ml-1" />
                     )}
                   </TableHead>
                   <TableHead 
@@ -287,7 +287,7 @@ const Routes = () => {
                   >
                     Location
                     {sortField === "location" && (
-                      sortDirection === "asc" ? <LuArrowUp className="inline ml-1" /> : <LuArrowDown className="inline ml-1" />
+                      sortDirection === "asc" ? <ArrowUp className="inline ml-1" /> : <ArrowDown className="inline ml-1" />
                     )}
                   </TableHead>
                   <TableHead 
@@ -296,7 +296,7 @@ const Routes = () => {
                   >
                     Type
                     {sortField === "type" && (
-                      sortDirection === "asc" ? <LuArrowUp className="inline ml-1" /> : <LuArrowDown className="inline ml-1" />
+                      sortDirection === "asc" ? <ArrowUp className="inline ml-1" /> : <ArrowDown className="inline ml-1" />
                     )}
                   </TableHead>
                   <TableHead 
@@ -305,7 +305,7 @@ const Routes = () => {
                   >
                     Length (mi)
                     {sortField === "length" && (
-                      sortDirection === "asc" ? <LuArrowUp className="inline ml-1" /> : <LuArrowDown className="inline ml-1" />
+                      sortDirection === "asc" ? <ArrowUp className="inline ml-1" /> : <ArrowDown className="inline ml-1" />
                     )}
                   </TableHead>
                   <TableHead 
@@ -314,7 +314,7 @@ const Routes = () => {
                   >
                     Pay Rate
                     {sortField === "payRate" && (
-                      sortDirection === "asc" ? <LuArrowUp className="inline ml-1" /> : <LuArrowDown className="inline ml-1" />
+                      sortDirection === "asc" ? <ArrowUp className="inline ml-1" /> : <ArrowDown className="inline ml-1" />
                     )}
                   </TableHead>
                   <TableHead>Action</TableHead>
@@ -456,23 +456,23 @@ const Routes = () => {
             </div>
           )}
         </div>
-        
-        {/* Bid and Apply Modals */}
-        {selectedRoute && (
-          <>
-            <BidModal
-              isOpen={isBidModalOpen}
-              onClose={closeBidModal}
-              route={selectedRoute}
-            />
-            <ApplyModal
-              isOpen={isApplyModalOpen}
-              onClose={closeApplyModal}
-              route={selectedRoute}
-            />
-          </>
-        )}
       </div>
+      
+      {/* Modals */}
+      {selectedRoute && (
+        <>
+          <BidModal 
+            isOpen={isBidModalOpen} 
+            onClose={closeBidModal} 
+            route={selectedRoute} 
+          />
+          <ApplyModal 
+            isOpen={isApplyModalOpen} 
+            onClose={closeApplyModal} 
+            route={selectedRoute} 
+          />
+        </>
+      )}
     </section>
   );
 };
