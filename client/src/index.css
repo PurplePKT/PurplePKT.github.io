@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Modern CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #6A1B9A 0%, #9C27B0 100%);
+  color: #222;
+}
+
 :root {
   --background: 0 0% 100%;
   --foreground: 20 14.3% 4.1%;
@@ -23,14 +38,14 @@
   --destructive-foreground: 60 9.1% 97.8%;
   --ring: 271 80% 47%;
   --radius: 0.5rem;
-  
+
   /* Chart colors */
   --chart-1: 271 80% 47%;
   --chart-2: 43 89% 51%;
   --chart-3: 0 85% 61%;
   --chart-4: 199 89% 48%;
   --chart-5: 115 55% 55%;
-  
+
   /* Sidebar colors */
   --sidebar-background: 271 80% 30%;
   --sidebar-foreground: 0 0% 100%;
@@ -63,14 +78,14 @@
   --destructive-foreground: 0 0% 98%;
   --ring: 271 80% 54%;
   --radius: 0.5rem;
-  
+
   /* Chart colors */
   --chart-1: 271 80% 54%;
   --chart-2: 43 89% 61%;
   --chart-3: 0 85% 71%;
   --chart-4: 199 89% 58%;
   --chart-5: 115 55% 65%;
-  
+
   /* Sidebar colors */
   --sidebar-background: 271 80% 20%;
   --sidebar-foreground: 0 0% 100%;
@@ -90,6 +105,51 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+}
+
+/* Step 5: Typography Tweaks for Headings */
+h1, h2, h3 {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #6A1B9A;
+}
+
+/* Step 6: Fade-In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(24px);}
+  to { opacity: 1; transform: none;}
+}
+
+/* Apply fade-in and glassmorphism to your main container/card */
+.main-container {
+  animation: fadeIn 0.8s cubic-bezier(.5,1.5,.5,1) 1;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid rgba(106,27,154,0.08);
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 32px 0 rgba(106,27,154,0.15);
+  padding: 2.5rem 2rem;
+  max-width: 600px;
+  margin: 4rem auto;
+}
+
+/* Modern Button Styles */
+.button, button {
+  background: linear-gradient(135deg, #6A1B9A 0%, #9C27B0 100%);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75em 2em;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(106,27,154,0.08);
+  cursor: pointer;
+}
+.button:hover, button:hover {
+  box-shadow: 0 6px 24px rgba(106,27,154,0.18);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .custom-scrollbar::-webkit-scrollbar {
