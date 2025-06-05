@@ -116,18 +116,23 @@ const About = () => {
             <div className="flex flex-col md:flex-row">
               <div className="md:w-2/3 md:pr-8">
                 <h3 className="text-xl font-semibold mb-4 text-primary">Our Mission</h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-gray-700 mb-4 indented">
                   Purple Pocket LLC is a specialized logistics management company focused on connecting qualified carriers with USPS route opportunities. 
                   We facilitate the bidding process for USPS routes and help ensure efficient mail delivery across the United States.
                 </p>
-                <p className="text-gray-700 mb-4">
-                  Purple pocket LLC is a transportation and logistics company dedicated to providing reliable rural mail delivery through highway contract routes. We proudly serve remote communities with consistency, efficiency, and a strong sense of responsibility. 
-                  
-Our mission is simple: to deliver with integrity and to operate with excellence. We understand the importance of timely dependable service- not just for the postal system, but for the people and communities that count on us every day.
-We hold ourselves and our drivers to the highest standards from route management to customer interaction, our focus is on doing their job right- with care with precision, and with pride in the work we do.
-                  
-At Purple Pocket LLC, we believe that rural routes deserve big-city dependability. And we are here to deliver just that.
+               <p className="text-gray-700 mb-4">
+                  Purple Pocket LLC is a transportation and logistics company dedicated to providing reliable rural mail delivery through highway contract routes. We proudly serve remote communities with consistency, efficiency, and a strong sense of responsibility.
                 </p>
+                <p className="text-gray-700 mb-4">
+                  Our mission is simple: to deliver with integrity and to operate with excellence. We understand the importance of timely, dependable service—not just for the postal system, but for the people and communities that count on us every day.
+                </p>
+                <p className="text-gray-700 mb-4">
+                  We hold ourselves and our drivers to the highest standards. From route management to customer interaction, our focus is on doing the job right—with care, with precision, and with pride in the work we do.
+                </p>
+                <p className="text-gray-700 mb-4">
+                  At Purple Pocket LLC, we believe that rural routes deserve big-city dependability. And we are here to deliver just that.
+                </p>
+
                 <h3 className="text-xl font-semibold mb-4 mt-6 text-primary">What We Do</h3>
                 <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
                   <li>Connect qualified drivers with available USPS routes</li>
