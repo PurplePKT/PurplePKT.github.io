@@ -12,14 +12,12 @@ export interface Route {
 // Solicitation data types
 export interface Solicitation {
   id: string;
-  title: string;
-  status: 'open' | 'closing' | 'review';
-  description: string;
-  postedDate: string;
-  closingDate: string;
-  experience: number;
+  location: string;
+  miles: number;   // or string, depending on your needs
+  hours: number;   // or string
+  bid_due: string;
   duration: number;
-  budget: string;
+  pay_rate: string;
 }
 
 // Executive data types
