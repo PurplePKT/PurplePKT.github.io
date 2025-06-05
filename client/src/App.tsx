@@ -7,6 +7,10 @@ import Home from "./pages/Home";
 import Routes from "./pages/Routes";
 import Solicitations from "./pages/Solicitations";
 import About from "./pages/About";
+import FAQs from "./pages/FAQs";
+import Feedback from "./pages/Feedback";
+import Testimonials from "./pages/Testimonials";
+
 
 function App() {
   return (
@@ -19,6 +23,9 @@ function App() {
             <Route path="/routes" component={Routes} />
             <Route path="/solicitations" component={Solicitations} />
             <Route path="/about" component={About} />
+            <Route path="/faqs" component={FAQs} />
+            <Route path="/feedback" component={Feedback} />
+            <Route path="/testimonials" component={Testimonials} />
             <Route component={NotFound} />
           </Switch>
         </main>

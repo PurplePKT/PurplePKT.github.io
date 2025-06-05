@@ -121,8 +121,12 @@ const About = () => {
                   We facilitate the bidding process for USPS routes and help ensure efficient mail delivery across the United States.
                 </p>
                 <p className="text-gray-700 mb-4">
-                  At Purple Pocket LLC, our mission is to deliver dependable mail and shipping services that support our communities, empower small business, and create meaningful local employment. 
-                  We are committed to operational excellence, integrity, and innovation with every route we run and every package we handle.
+                  Purple pocket LLC is a transportation and logistics company dedicated to providing reliable rural mail delivery through highway contract routes. We proudly serve remote communities with consistency, efficiency, and a strong sense of responsibility. 
+                  
+Our mission is simple: to deliver with integrity and to operate with excellence. We understand the importance of timely dependable service- not just for the postal system, but for the people and communities that count on us every day.
+We hold ourselves and our drivers to the highest standards from route management to customer interaction, our focus is on doing their job right- with care with precision, and with pride in the work we do.
+                  
+At Purple Pocket LLC, we believe that rural routes deserve big-city dependability. And we are here to deliver just that.
                 </p>
                 <h3 className="text-xl font-semibold mb-4 mt-6 text-primary">What We Do</h3>
                 <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
