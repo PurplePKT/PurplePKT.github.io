@@ -121,8 +121,8 @@ const About = () => {
                   We facilitate the bidding process for USPS routes and help ensure efficient mail delivery across the United States.
                 </p>
                 <p className="text-gray-700 mb-4">
-                  Founded in 2015, we have successfully managed over 500 route contracts and have established a reputation for excellence in the postal logistics industry.
-                  Our team combines decades of experience in postal operations, contract management, and transportation logistics.
+                  At Purple Pocket LLC, our mission is to deliver dependable mail and shipping services that support our communities, empower small business, and create meaningful local employment. 
+                  We are committed to operational excellence, integrity, and innovation with every route we run and every package we handle.
                 </p>
                 <h3 className="text-xl font-semibold mb-4 mt-6 text-primary">What We Do</h3>
                 <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
