@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from "react";
 import Papa from "papaparse";
 import { useTable, useSortBy, usePagination } from "react-table";
 
-// Define the structure of your CSV data
 interface Route {
   route_id: string;
   route_name: string;
@@ -21,30 +20,28 @@ export default function Routes() {
 useEffect(() => {
   const fetchLatestCsv = async () => {
     try {
-      // 1. Get the latest CSV file name from your backend
-      const latestCsvResponse = await fetch('/api/latest-csv');
-      console.log('API response status:', latestCsvResponse.status);
-      const apiData = await latestCsvResponse.json();
-      console.log('API data:', apiData);
-
-      // 2. Fetch the CSV file itself
-      const csvResponse = await fetch(`/data/${apiData.latestFile}`);
-      console.log('CSV response status:', csvResponse.status);
+      let csvUrl;
+      if (window.location.hostname.includes('github.io')) {
+        // GitHub Pages: Fetch static CSV
+        csvUrl = '/data/routes.csv';
+      } else {
+        // Local or other hosting: Use Express API
+        const latestCsvResponse = await fetch('/api/latest-csv');
+        const apiData = await latestCsvResponse.json();
+        csvUrl = `/data/${apiData.latestFile}`;
+      }
+      const csvResponse = await fetch(csvUrl);
       const csvText = await csvResponse.text();
-      console.log('CSV text (first 200 chars):', csvText.substring(0, 200));
 
-      // 3. Parse the CSV
       Papa.parse(csvText, {
         header: true,
         skipEmptyLines: true,
         dynamicTyping: true,
         complete: (results) => {
-          console.log('Parsed data:', results.data);
           setRoutesData(results.data);
           setLoading(false);
         },
         error: (err) => {
-          console.error('CSV parsing error:', err.message);
           setError(err.message);
           setLoading(false);
         }
@@ -71,9 +68,9 @@ useEffect(() => {
         id: "actions",
         Cell: ({ row }: any) => (
           <div className="space-x-2">
-            <button 
+            <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => alert(`Bid on route ${row.original.route_id}`)}
+              onClick={() => alert(`Bid for route ${row.original.route_id}`)}
             >
               Bid
             </button>
