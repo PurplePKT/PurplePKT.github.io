@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 
-interface ModalProps {
+interface ViewDetailsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
-export function Modal({ isOpen, onClose, children }: ModalProps) {
+export function ViewDetailsModal({ isOpen, onClose, children }: ViewDetailsModalProps) {
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -17,7 +17,10 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
         >
           ×
         </button>
-        {children}
+        <h3 className="text-xl font-bold mb-4">Coming Soon</h3>
+        <p className="text-gray-700">
+          This feature is under development. Check back later for more details!
+        </p>
       </div>
     </div>
   );
