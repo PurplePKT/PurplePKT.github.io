@@ -120,9 +120,6 @@ const About = () => {
                   Purple Pocket LLC is a specialized logistics management company focused on connecting qualified carriers with USPS route opportunities. 
                   We facilitate the bidding process for USPS routes and help ensure efficient mail delivery across the United States.
                 </p>
-               <p className="text-gray-700 mb-4">
-                  Purple Pocket LLC is a transportation and logistics company dedicated to providing reliable rural mail delivery through highway contract routes. We proudly serve remote communities with consistency, efficiency, and a strong sense of responsibility.
-                </p>
                 <p className="text-gray-700 mb-4">
                   Our mission is simple: to deliver with integrity and to operate with excellence. We understand the importance of timely, dependable service—not just for the postal system, but for the people and communities that count on us every day.
                 </p>

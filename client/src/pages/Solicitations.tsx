@@ -1,5 +1,6 @@
                 import { useState, useEffect, useMemo } from "react";
                 import Papa from "papaparse";
+                import { ViewDetailsModal } from "@/components/modals/ViewDetailsModal";
                 import { Button } from "@/components/ui/button";
                 import { Input } from "@/components/ui/input";
                 import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card";
