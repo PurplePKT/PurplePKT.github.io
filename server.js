@@ -1,58 +1,47 @@
+// server.js
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Create __dirname equivalent for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 5000;
 
-// Serve static files from client/public (matches your CSV location)
-app.use(express.static(path.join(__dirname, 'client', 'public')));
+// Serve static files from dist/public (Vite's build output)
+app.use(express.static(path.join(__dirname, 'dist', 'public')));
 
-// Endpoint to get the latest CSV file
+// Serve CSV files from client/public/data
+app.use('/data', express.static(path.join(__dirname, 'client', 'public', 'data')));
+
+// API endpoint to get latest CSV file
 app.get('/api/latest-csv', async (req, res) => {
-  const csvDir = path.join(__dirname, 'client', 'public', 'data'); // Updated path
+  const csvDir = path.join(__dirname, 'client', 'public', 'data');
 
   try {
-    // Read the directory and filter for CSV files
     const files = fs.readdirSync(csvDir)
       .filter(file => file.endsWith('.csv'))
       .map(file => ({
         name: file,
-        path: path.join(csvDir, file)
-      }));
+        path: path.join(csvDir, file),
+        mtime: fs.statSync(path.join(csvDir, file)).mtime
+      }))
+      .sort((a, b) => b.mtime - a.mtime);
 
-    if (files.length === 0) {
-      return res.status(404).json({ error: 'No CSV files found.' });
-    }
-
-    // Get file stats and sort by modified time
-    const filesWithStats = files.map(file => {
-      const stats = fs.statSync(file.path);
-      return {
-        ...file,
-        mtime: stats.mtime
-      };
-    });
-
-    // Sort by modified time (newest first)
-    filesWithStats.sort((a, b) => b.mtime - a.mtime);
-
-    // Return the most recent file
-    res.json({
-      latestFile: filesWithStats[0].name,
-      files: filesWithStats.map(f => f.name)
-    });
+    res.json({ latestFile: files[0].name });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Start the server
+// Serve React app for all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'public', 'index.html'));
+});
+
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

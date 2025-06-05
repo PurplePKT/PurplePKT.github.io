@@ -1,4 +1,4 @@
-ID,location,state,zip,type,R/t miles,Pay_rate
+id,location,state,zip,type,length,pay_rate
 1,,,,SOL,,18.61
 2,,,,SOL,,18.61
 3,,,05737,SOL,,18
@@ -277,7 +277,7 @@ ID,location,state,zip,type,R/t miles,Pay_rate
 269,,,81211,SOL,62,24.87
 270,,,77962,SOL,60.4,24.96
 271,,,71433,SOL,27.2,24.58
-272,,,25827,SOL,18.4,#VALUE!
+272,,,25827,SOL,18.4,
 273,,,83318,SOL,31.3,24.87
 0273B,,,83318,,63.7,0
 0273C,,,83318,,30.8,0

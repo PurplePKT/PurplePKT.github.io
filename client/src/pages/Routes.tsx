@@ -23,46 +23,38 @@ useEffect(() => {
     try {
       // 1. Get the latest CSV file name from your backend
       const latestCsvResponse = await fetch('/api/latest-csv');
-      if (!latestCsvResponse.ok) {
-        throw new Error('Failed to fetch latest CSV info');
-      }
-      const { latestFile } = await latestCsvResponse.json();
+      console.log('API response status:', latestCsvResponse.status);
+      const apiData = await latestCsvResponse.json();
+      console.log('API data:', apiData);
 
       // 2. Fetch the CSV file itself
-      const csvResponse = await fetch(`/data/${latestFile}`);
-      if (!csvResponse.ok) {
-        throw new Error('Failed to fetch CSV file');
-      }
+      const csvResponse = await fetch(`/data/${apiData.latestFile}`);
+      console.log('CSV response status:', csvResponse.status);
       const csvText = await csvResponse.text();
+      console.log('CSV text (first 200 chars):', csvText.substring(0, 200));
 
-      // 3. Debug: Log the raw CSV text
-      console.log('CSV text:', csvText);
-
-      // 4. Parse the CSV
-Papa.parse(csvText, {
-  header: true,
-  skipEmptyLines: true, // <-- Add this line
-  dynamicTyping: true, // <-- Optional, but recommended for numeric data
-  complete: (results) => {
-    // Debug: Log the parsed data
-    console.log('Parsed data:', results.data);
-    setRoutesData(results.data);
-    setLoading(false); // <-- Add this line
-  },
-  error: (err) => {
-    // Debug: Log the error
-    console.error('CSV parsing error:', err.message);
-    setError(err.message);
-    setLoading(false);
-  }
-});
-} catch (err) {
-  setError(err instanceof Error ? err.message : 'Unknown error');
-  setLoading(false);
-}
-};
-
-fetchLatestCsv();
+      // 3. Parse the CSV
+      Papa.parse(csvText, {
+        header: true,
+        skipEmptyLines: true,
+        dynamicTyping: true,
+        complete: (results) => {
+          console.log('Parsed data:', results.data);
+          setRoutesData(results.data);
+          setLoading(false);
+        },
+        error: (err) => {
+          console.error('CSV parsing error:', err.message);
+          setError(err.message);
+          setLoading(false);
+        }
+      });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+      setLoading(false);
+    }
+  };
+  fetchLatestCsv();
 }, []);
 
   // Define columns for react-table
