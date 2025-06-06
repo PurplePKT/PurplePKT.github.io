@@ -108,3 +108,21 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   @apply bg-primary/50;
 }
+
+/* Executive Card Styles */
+.executive-card {
+  text-align: center;
+  margin: 1rem;
+}
+
+.executive-name {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.linkedin-icon {
+  color: #0077B5;
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}

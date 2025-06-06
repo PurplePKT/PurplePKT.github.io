@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Executive } from "../data/types";
 import { Card, CardContent } from "@/components/ui/card";
+import ExecutiveCard from '@/components/ExecutiveCard';
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
@@ -172,25 +173,12 @@ const About = () => {
         </Card>
         
         {/* Executive Team */}
-        <h3 className="text-2xl font-bold mb-6 text-center text-primary">Our Leadership Team</h3>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {executives.map((executive) => (
-            <Card key={executive.id} className="overflow-hidden flex flex-col">
-              <CardContent className="p-4">
-                <img 
-                  src={executive.imageUrl} 
-                  alt={executive.name} 
-                  className="w-full h-48 object-cover rounded-md"
-                />
-                <h4 className="text-xl font-medium mt-4 text-primary">{executive.name}</h4>
-                <p className="text-gray-500 text-sm">{executive.title}</p>
-                <p className="mt-3 text-gray-700 text-sm">{executive.bio}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {executives.map((executive) => (
+          <ExecutiveCard key={executive.id} executive={executive} />
+        ))}
       </div>
+
     </section>
   );
 };
