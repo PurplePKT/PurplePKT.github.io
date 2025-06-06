@@ -19,19 +19,5 @@
     "title": "Chief Financial Officer",
     "bio": "Jennifer is a CPA with 18 years of experience in financial management. She oversees all financial operations and has helped Purple Pocket achieve consistent growth since joining in 2017.",
     "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80"
-  },
-  {
-    "id": 4,
-    "name": "Robert Washington",
-    "title": "Chief Technology Officer",
-    "bio": "Robert has led technology initiatives at multiple logistics companies. He pioneered our route optimization software and oversees all technical infrastructure for the company.",
-    "imageUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80"
-  },
-  {
-    "id": 5,
-    "name": "Amanda Carter",
-    "title": "Director of Business Development",
-    "bio": "Amanda focuses on expanding our services into new regions. With a background in federal contracting, she has been instrumental in securing partnerships with major logistics providers.",
-    "imageUrl": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80"
   }
 ]
