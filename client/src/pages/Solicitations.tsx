@@ -3,7 +3,12 @@ import Papa from "papaparse";
 import { ViewDetailsModal } from "@/components/modals/ViewDetailsModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardFooter,
+} from "@/components/ui/card";
 import {
   Pagination,
   PaginationContent,
@@ -14,7 +19,13 @@ import {
 } from "@/components/ui/pagination";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Search, Timer, DollarSign, MapPin } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Solicitation {
   id: string;
@@ -27,7 +38,9 @@ interface Solicitation {
 }
 
 export default function Solicitations() {
-  const [solicitationsData, setSolicitationsData] = useState<Solicitation[]>([]);
+  const [solicitationsData, setSolicitationsData] = useState<Solicitation[]>(
+    [],
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
@@ -41,12 +54,12 @@ export default function Solicitations() {
     const fetchLatestCsv = async () => {
       try {
         let csvUrl;
-        if (window.location.hostname.includes('github.io')) {
+        if (window.location.hostname.includes("github.io")) {
           // GitHub Pages: Fetch static CSV
-          csvUrl = '/data/solicitations.csv';
+          csvUrl = "/data/solicitations.csv";
         } else {
           // Local or other hosting: Use Express API
-          const latestCsvResponse = await fetch('/api/latest-csv');
+          const latestCsvResponse = await fetch("/api/latest-csv");
           const apiData = await latestCsvResponse.json();
           csvUrl = `/data/${apiData.latestFile}`;
         }
@@ -83,7 +96,7 @@ export default function Solicitations() {
     fetchLatestCsv();
   }, []);
 
-  // Format date for display (if bid_due is a date)
+  // Format date for display
   const formatDate = (dateString: string) => {
     try {
       const date = new Date(dateString);
@@ -100,16 +113,28 @@ export default function Solicitations() {
   // Filter and sort solicitations
   const filteredSolicitations = useMemo(() => {
     if (!solicitationsData) return [];
-
     const filtered = solicitationsData.filter((solicitation) => {
       const searchLower = search.toLowerCase();
       return (
         searchLower === "" ||
-        solicitation.location.toLowerCase().includes(searchLower) ||
-        solicitation.id.toLowerCase().includes(searchLower)
+        (solicitation.location ? solicitation.location.toLowerCase().includes(searchLower) : false) ||
+        (solicitation.id ? String(solicitation.id).toLowerCase().includes(searchLower) : false)
       );
     });
 
+    // SAFE, ROBUST FILTER LOGIC
+    const filtered = solicitationsData.filter((solicitation) => {
+      const searchLower = search.toLowerCase();
+      return (
+        searchLower === "" ||
+        (solicitation.location || "").toLowerCase().includes(searchLower) ||
+        String(solicitation.id || "")
+          .toLowerCase()
+          .includes(searchLower)
+      );
+    });
+
+    // Sorting
     switch (sortOption) {
       case "miles-desc":
         return [...filtered].sort((a, b) => b.miles - a.miles);
@@ -141,7 +166,9 @@ export default function Solicitations() {
     return (
       <section id="solicitations" className="py-10 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center text-primary">Active Solicitations</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-primary">
+            Active Solicitations
+          </h2>
           <div className="mb-6 bg-gray-50 p-4 rounded-lg shadow-md">
             <div className="flex flex-col md:flex-row gap-4">
               <Skeleton className="h-10 flex-grow" />
@@ -186,9 +213,13 @@ export default function Solicitations() {
     return (
       <section id="solicitations" className="py-10 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center text-primary">Active Solicitations</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-primary">
+            Active Solicitations
+          </h2>
           <div className="bg-white p-8 rounded-lg shadow-md text-center">
-            <h3 className="text-xl text-destructive font-bold mb-4">Error Loading Solicitations</h3>
+            <h3 className="text-xl text-destructive font-bold mb-4">
+              Error Loading Solicitations
+            </h3>
             <p className="mb-4">{error}</p>
             <Button onClick={() => window.location.reload()}>Try Again</Button>
           </div>
@@ -201,9 +232,9 @@ export default function Solicitations() {
   return (
     <section id="solicitations" className="py-10 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center text-primary">Active Solicitations</h2>
-
-        {/* Filters */}
+        <h2 className="text-3xl font-bold mb-8 text-center text-primary">
+          Active Solicitations
+        </h2>
         <div className="mb-6 bg-gray-50 p-4 rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-grow">
@@ -226,12 +257,20 @@ export default function Solicitations() {
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="miles-desc">Miles (High to Low)</SelectItem>
+                  <SelectItem value="miles-desc">
+                    Miles (High to Low)
+                  </SelectItem>
                   <SelectItem value="miles-asc">Miles (Low to High)</SelectItem>
-                  <SelectItem value="hours-desc">Hours (High to Low)</SelectItem>
+                  <SelectItem value="hours-desc">
+                    Hours (High to Low)
+                  </SelectItem>
                   <SelectItem value="hours-asc">Hours (Low to High)</SelectItem>
-                  <SelectItem value="duration-desc">Duration (High to Low)</SelectItem>
-                  <SelectItem value="duration-asc">Duration (Low to High)</SelectItem>
+                  <SelectItem value="duration-desc">
+                    Duration (High to Low)
+                  </SelectItem>
+                  <SelectItem value="duration-asc">
+                    Duration (Low to High)
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -247,7 +286,10 @@ export default function Solicitations() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayedSolicitations.map((solicitation) => (
-              <Card key={solicitation.id} className="border border-gray-200 flex flex-col">
+              <Card
+                key={solicitation.id}
+                className="border border-gray-200 flex flex-col"
+              >
                 <CardHeader className="p-4 bg-primary-light text-white">
                   <div className="flex justify-between items-start">
                     <h3 className="text-lg font-medium">
@@ -255,7 +297,9 @@ export default function Solicitations() {
                       {solicitation.location}
                     </h3>
                   </div>
-                  <p className="text-sm mt-1">Solicitation #{solicitation.id}</p>
+                  <p className="text-sm mt-1">
+                    Solicitation #{solicitation.id}
+                  </p>
                 </CardHeader>
                 <CardContent className="p-4 flex-grow">
                   <div className="mt-4 space-y-2">
@@ -279,7 +323,10 @@ export default function Solicitations() {
                   </div>
                 </CardContent>
                 <CardFooter className="border-t border-gray-200 p-4 bg-gray-50">
-                  <Button className="w-full" onClick={() => setIsModalOpen(true)}>
+                  <Button
+                    className="w-full"
+                    onClick={() => setIsModalOpen(true)}
+                  >
                     View Details
                   </Button>
                 </CardFooter>
@@ -300,7 +347,9 @@ export default function Solicitations() {
                       e.preventDefault();
                       setPage(Math.max(1, page - 1));
                     }}
-                    className={page === 1 ? "pointer-events-none opacity-50" : ""}
+                    className={
+                      page === 1 ? "pointer-events-none opacity-50" : ""
+                    }
                   />
                 </PaginationItem>
                 {[...Array(totalPages)].map((_, i) => {
@@ -344,7 +393,11 @@ export default function Solicitations() {
                       e.preventDefault();
                       setPage(Math.min(totalPages, page + 1));
                     }}
-                    className={page === totalPages ? "pointer-events-none opacity-50" : ""}
+                    className={
+                      page === totalPages
+                        ? "pointer-events-none opacity-50"
+                        : ""
+                    }
                   />
                 </PaginationItem>
               </PaginationContent>

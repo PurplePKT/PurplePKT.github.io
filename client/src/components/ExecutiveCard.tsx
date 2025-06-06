@@ -12,10 +12,9 @@ function ExecutiveCard({ executive }: { executive: { id: number; name: string; t
         />
         <h4 className="text-xl font-medium mt-4 text-primary">{executive.name}</h4>
         <p className="text-gray-500 text-sm">{executive.title}</p>
-        {/* Add the LinkedIn icon here */}
         <div className="mt-2">
-          <a href={executive.linkedInUrl} target="_blank" rel="noopener noreferrer">
-            <FaLinkedin className="inline text-[#0077B5] text-2xl" />
+          <a href={executive.linkedInUrl} target="_blank" rel="noopener noreferrer" className="inline-block">
+            <FaLinkedin className="text-[#0077B5] text-2xl" />
           </a>
         </div>
       </CardContent>
