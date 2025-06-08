@@ -37,10 +37,8 @@ interface Solicitation {
   pay_rate: string;
 }
 
-export default function Solicitations() {
-  const [solicitationsData, setSolicitationsData] = useState<Solicitation[]>(
-    [],
-  );
+function Solicitations() {
+  const [solicitationsData, setSolicitationsData] = useState<Solicitation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
@@ -49,16 +47,13 @@ export default function Solicitations() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const itemsPerPage = 6;
 
-  // Fetch and parse the latest CSV file when the component mounts
   useEffect(() => {
     const fetchLatestCsv = async () => {
       try {
         let csvUrl;
         if (window.location.hostname.includes("github.io")) {
-          // GitHub Pages: Fetch static CSV
           csvUrl = "/data/solicitations.csv";
         } else {
-          // Local or other hosting: Use Express API
           const latestCsvResponse = await fetch("/api/latest-csv");
           const apiData = await latestCsvResponse.json();
           csvUrl = `/data/${apiData.latestFile}`;
@@ -96,7 +91,6 @@ export default function Solicitations() {
     fetchLatestCsv();
   }, []);
 
-  // Format date for display
   const formatDate = (dateString: string) => {
     try {
       const date = new Date(dateString);
@@ -110,7 +104,6 @@ export default function Solicitations() {
     }
   };
 
-  // Filter and sort solicitations
   const filteredSolicitations = useMemo(() => {
     if (!solicitationsData) return [];
     const filtered = solicitationsData.filter((solicitation) => {
@@ -122,19 +115,6 @@ export default function Solicitations() {
       );
     });
 
-    // SAFE, ROBUST FILTER LOGIC
-    const filtered = solicitationsData.filter((solicitation) => {
-      const searchLower = search.toLowerCase();
-      return (
-        searchLower === "" ||
-        (solicitation.location || "").toLowerCase().includes(searchLower) ||
-        String(solicitation.id || "")
-          .toLowerCase()
-          .includes(searchLower)
-      );
-    });
-
-    // Sorting
     switch (sortOption) {
       case "miles-desc":
         return [...filtered].sort((a, b) => b.miles - a.miles);
@@ -153,7 +133,6 @@ export default function Solicitations() {
     }
   }, [solicitationsData, search, sortOption]);
 
-  // Pagination
   const totalPages = Math.ceil(filteredSolicitations.length / itemsPerPage);
   const displayedSolicitations = useMemo(() => {
     const start = (page - 1) * itemsPerPage;
@@ -161,7 +140,6 @@ export default function Solicitations() {
     return filteredSolicitations.slice(start, end);
   }, [filteredSolicitations, page, itemsPerPage]);
 
-  // Loading skeleton
   if (loading) {
     return (
       <section id="solicitations" className="py-10 bg-white">
@@ -208,7 +186,6 @@ export default function Solicitations() {
     );
   }
 
-  // Error state
   if (error) {
     return (
       <section id="solicitations" className="py-10 bg-white">
@@ -228,7 +205,6 @@ export default function Solicitations() {
     );
   }
 
-  // Main render
   return (
     <section id="solicitations" className="py-10 bg-white">
       <div className="container mx-auto px-4">
@@ -414,3 +390,5 @@ export default function Solicitations() {
     </section>
   );
 }
+
+export default Solicitations;

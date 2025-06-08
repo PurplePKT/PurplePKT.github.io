@@ -3,11 +3,12 @@ import Papa from "papaparse";
 import { useTable, useSortBy, usePagination } from "react-table";
 
 interface Route {
-  route_id: string;
-  route_name: string;
-  status: string;
-  location?: string;
-  zip?: string;
+  id: string;
+  "sol #": string;
+  "city, state": string;
+  zip: string;
+  type: string;
+  duration: string;
   pay_rate?: string;
 }
 
@@ -16,52 +17,49 @@ export default function Routes() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch and parse the latest CSV file when the component mounts
-useEffect(() => {
-  const fetchLatestCsv = async () => {
-    try {
-      let csvUrl;
-      if (window.location.hostname.includes('github.io')) {
-        // GitHub Pages: Fetch static CSV
-        csvUrl = '/data/routes.csv';
-      } else {
-        // Local or other hosting: Use Express API
-        const latestCsvResponse = await fetch('/api/latest-csv');
-        const apiData = await latestCsvResponse.json();
-        csvUrl = `/data/${apiData.latestFile}`;
-      }
-      const csvResponse = await fetch(csvUrl);
-      const csvText = await csvResponse.text();
-
-      Papa.parse(csvText, {
-        header: true,
-        skipEmptyLines: true,
-        dynamicTyping: true,
-        complete: (results) => {
-          setRoutesData(results.data);
-          setLoading(false);
-        },
-        error: (err) => {
-          setError(err.message);
-          setLoading(false);
+  useEffect(() => {
+    const fetchLatestCsv = async () => {
+      try {
+        let csvUrl;
+        if (window.location.hostname.includes('github.io')) {
+          csvUrl = '/data/routes.csv';
+        } else {
+          const latestCsvResponse = await fetch('/api/latest-csv');
+          const apiData = await latestCsvResponse.json();
+          csvUrl = `/data/${apiData.latestFile}`;
         }
-      });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unknown error');
-      setLoading(false);
-    }
-  };
-  fetchLatestCsv();
-}, []);
+        const csvResponse = await fetch(csvUrl);
+        const csvText = await csvResponse.text();
 
-  // Define columns for react-table
+        Papa.parse(csvText, {
+          header: true,
+          skipEmptyLines: true,
+          dynamicTyping: true,
+          complete: (results) => {
+            setRoutesData(results.data);
+            setLoading(false);
+          },
+          error: (err) => {
+            setError(err.message);
+            setLoading(false);
+          }
+        });
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+        setLoading(false);
+      }
+    };
+    fetchLatestCsv();
+  }, []);
+
   const columns = useMemo(
     () => [
-      { Header: "Route ID", accessor: "route_id" },
-      { Header: "Route Name", accessor: "route_name" },
-      { Header: "Status", accessor: "status" },
-      { Header: "Location", accessor: "location" },
+      { Header: "Route ID", accessor: "id" },
+      { Header: "Solicitation #", accessor: "sol #" },
+      { Header: "City, State", accessor: "city, state" },
       { Header: "ZIP Code", accessor: "zip" },
+      { Header: "Type", accessor: "type" },
+      { Header: "Duration", accessor: "duration" },
       { Header: "Pay Rate", accessor: "pay_rate" },
       {
         Header: "Actions",
@@ -69,14 +67,8 @@ useEffect(() => {
         Cell: ({ row }: any) => (
           <div className="space-x-2">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => alert(`Bid for route ${row.original.route_id}`)}
-            >
-              Bid
-            </button>
-            <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => alert(`Apply for route ${row.original.route_id}`)}
+              onClick={() => alert(`Apply for route ${row.original.id}`)}
             >
               Apply
             </button>
@@ -87,7 +79,6 @@ useEffect(() => {
     []
   );
 
-  // Setup react-table instance
   const {
     getTableProps,
     getTableBodyProps,

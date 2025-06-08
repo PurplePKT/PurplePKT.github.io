@@ -1,15 +1,47 @@
+Index.js
+
 // server/index.ts
 import express2 from "express";
 
 // server/routes.ts
 import { createServer } from "http";
+import fs from "fs/promises";
+import path from "path";
+
 async function registerRoutes(app2) {
+  // Existing health check
   app2.get("/api/health", (req, res) => {
     res.json({ status: "ok", message: "Server is running" });
   });
+
+  // New CSV endpoint ================
+  app2.get("/api/latest-csv", async (req, res) => {
+    try {
+      const dataDir = path.join(__dirname, "..", "public", "data");
+      const files = await fs.readdir(dataDir);
+
+      // Get sorted CSV files (newest first)
+      const csvFiles = files
+        .filter(file => file.startsWith("Routes_") || file.startsWith("Solicitations_"))
+        .sort((a, b) => b.localeCompare(a)); // Reverse chronological order
+
+      res.json({
+        routes: csvFiles.find(f => f.startsWith("Routes_")),
+        solicitations: csvFiles.find(f => f.startsWith("Solicitations_"))
+      });
+    } catch (error) {
+      res.status(500).json({
+        error: "Failed to fetch CSV files",
+        details: error.message
+      });
+    }
+  });
+  // End new endpoint ================
+
   const httpServer = createServer(app2);
   return httpServer;
 }
+
 
 // server/vite.ts
 import express from "express";
