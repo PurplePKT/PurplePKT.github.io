@@ -1,37 +1,23 @@
 [
   {
     "id": 1,
-    "name": "Sarah Johnson",
+    "name": "Seven Sims",
     "title": "Chief Executive Officer",
-    "bio": "Sarah has over 20 years of experience in logistics and supply chain management. Before founding Purple Pocket LLC, she served as Regional Director for USPS operations in the Western United States.",
-    "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80"
+    "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80",
+    "linkedInUrl": "https://www.linkedin.com/in/csevensims"
   },
   {
     "id": 2,
-    "name": "Michael Rodriguez",
+    "name": "Esther 'EJ' Armah",
     "title": "Chief Operations Officer",
-    "bio": "Michael brings 15 years of experience in transportation logistics. He previously managed a fleet of over 200 vehicles and specializes in optimizing delivery routes for maximum efficiency.",
-    "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80"
+    "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80",
+    "linkedInUrl": "https://www.linkedin.com/in/esther-armah-2862b4b5"
   },
   {
     "id": 3,
-    "name": "Jennifer Lee",
-    "title": "Chief Financial Officer",
-    "bio": "Jennifer is a CPA with 18 years of experience in financial management. She oversees all financial operations and has helped Purple Pocket achieve consistent growth since joining in 2017.",
-    "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80"
-  },
-  {
-    "id": 4,
-    "name": "Robert Washington",
-    "title": "Chief Technology Officer",
-    "bio": "Robert has led technology initiatives at multiple logistics companies. He pioneered our route optimization software and oversees all technical infrastructure for the company.",
-    "imageUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80"
-  },
-  {
-    "id": 5,
-    "name": "Amanda Carter",
-    "title": "Director of Business Development",
-    "bio": "Amanda focuses on expanding our services into new regions. With a background in federal contracting, she has been instrumental in securing partnerships with major logistics providers.",
-    "imageUrl": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80"
+    "name": "Crystal Dillon",
+    "title": "Chief Human Resources Officer",
+    "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80",
+    "linkedInUrl": "https://www.linkedin.com/in/crystal-dillon"
   }
 ]
