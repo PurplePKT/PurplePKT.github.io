@@ -12,10 +12,33 @@ interface Route {
   pay_rate?: string;
 }
 
+// Define ApplyModal within the same file
+function ApplyModal({ isOpen, onClose, route }: { isOpen: boolean; onClose: () => void; route: Route }) {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+        >
+          ×
+        </button>
+        <h3 className="text-xl font-bold mb-4">Apply - Coming Soon</h3>
+        <p className="text-gray-700">
+          Application for route {route.id} ({route["city, state"]}) will be available soon!
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function Routes() {
   const [routesData, setRoutesData] = useState<Route[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isApplyOpen, setIsApplyOpen] = useState(false);
+  const [selectedRoute, setSelectedRoute] = useState<Route | null>(null);
 
   useEffect(() => {
     const fetchLatestCsv = async () => {
@@ -57,8 +80,8 @@ export default function Routes() {
       { Header: "Route ID", accessor: "id" },
       { Header: "Solicitation #", accessor: "sol #" },
       { Header: "City, State", accessor: "city, state" },
-      { Header: "ZIP Code", accessor: "zip" },
-      { Header: "Type", accessor: "type" },
+      { Header: "ZIP Code", accessor: (row) => row.zip },
+      { Header: "Type", accessor: (row) => row.type },
       { Header: "Duration", accessor: "duration" },
       { Header: "Pay Rate", accessor: "pay_rate" },
       {
@@ -68,7 +91,10 @@ export default function Routes() {
           <div className="space-x-2">
             <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => alert(`Apply for route ${row.original.id}`)}
+              onClick={() => {
+                setSelectedRoute(row.original); // Fix: Use row.original instead of undefined 'route'
+                setIsApplyOpen(true);
+              }}
             >
               Apply
             </button>
@@ -211,6 +237,13 @@ export default function Routes() {
           </select>
         </div>
       </div>
+      {selectedRoute && (
+        <ApplyModal
+          isOpen={isApplyOpen}
+          onClose={() => setIsApplyOpen(false)}
+          route={selectedRoute}
+        />
+      )}
     </div>
   );
 }

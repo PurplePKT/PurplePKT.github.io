@@ -1,0 +1,8 @@
+id,sol #,"city, state",zip,type,duration,pay_rate,tab location
+48,801-871-24,"Carrabelle, Florida",32322,HCR,72,$24.58 ,AWARDED
+62,801-891-24,"Moses Lake, Washington",98837,Rural,23,$19.89 ,POSTED
+75,801-923-24,"Lebanon, Missouri",65536,HCR,72,$17.94 ,AWARDED
+94,801-949-24,"Dodge City, Kansas",67801,HCR,72,$17.94 ,AWARDED
+341,810-1447-24,"Junction City, Oregon",97448,HCR,71,$25.25 ,POSTED
+433,810-374-25,"Orlando, Florida",32814,Rural,20,$24.96 ,POSTED
+454,810-423-25,"Basalt, Colorado",81621,Rural,24,$25.25 ,POSTED
