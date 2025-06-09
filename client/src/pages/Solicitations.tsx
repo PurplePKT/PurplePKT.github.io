@@ -54,9 +54,9 @@ function Solicitations() {
         if (window.location.hostname.includes("github.io")) {
           csvUrl = "/data/solicitations.csv";
         } else {
-          const latestCsvResponse = await fetch("/api/latest-csv");
-          const apiData = await latestCsvResponse.json();
-          csvUrl = `/data/${apiData.latestFile}`;
+          const latestCsvResponse = await fetch('/api/latest-solicitations-csv');
+          const { latestFile } = await latestCsvResponse.json();
+          const csvUrl = `/data/${latestFile}`;
         }
         const csvResponse = await fetch(csvUrl);
         const csvText = await csvResponse.text();

@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Papa from "papaparse";
 import { useTable, useSortBy, usePagination } from "react-table";
+import ApplyModal from "@/components/modals/ApplyModal";
 
 interface Route {
   id: string;
@@ -10,27 +11,6 @@ interface Route {
   type: string;
   duration: string;
   pay_rate?: string;
-}
-
-// Define ApplyModal within the same file
-function ApplyModal({ isOpen, onClose, route }: { isOpen: boolean; onClose: () => void; route: Route }) {
-  if (!isOpen) return null;
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-        >
-          ×
-        </button>
-        <h3 className="text-xl font-bold mb-4">Apply - Coming Soon</h3>
-        <p className="text-gray-700">
-          Application for route {route.id} ({route["city, state"]}) will be available soon!
-        </p>
-      </div>
-    </div>
-  );
 }
 
 export default function Routes() {
@@ -47,9 +27,9 @@ export default function Routes() {
         if (window.location.hostname.includes('github.io')) {
           csvUrl = '/data/routes.csv';
         } else {
-          const latestCsvResponse = await fetch('/api/latest-csv');
-          const apiData = await latestCsvResponse.json();
-          csvUrl = `/data/${apiData.latestFile}`;
+          const latestCsvResponse = await fetch('/api/latest-routes-csv');
+          const { latestFile } = await latestCsvResponse.json();
+          const csvUrl = `/data/${latestFile}`;
         }
         const csvResponse = await fetch(csvUrl);
         const csvText = await csvResponse.text();
